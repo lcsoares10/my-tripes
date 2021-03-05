@@ -1,0 +1,12 @@
+import LinkWrapper from '.'
+import { render, screen } from '@testing-library/react'
+
+describe('<LinkWrapper>', () => {
+  it('should render link and children ', () => {
+    render(<LinkWrapper href="/my-link">Any</LinkWrapper>)
+
+    const children = screen.getByRole('link', { name: /any/i })
+    expect(children).toBeInTheDocument()
+    expect(children).toHaveAttribute('href', '/my-link')
+  })
+})
